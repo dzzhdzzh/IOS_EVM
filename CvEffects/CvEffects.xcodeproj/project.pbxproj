@@ -16,7 +16,7 @@
 		51E2042B1747A1C3005C39DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E2042A1747A1C3005C39DB /* Foundation.framework */; };
 		51E204601748A890005C39DB /* PostcardPrinter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E2045E1748A890005C39DB /* PostcardPrinter.cpp */; };
 		51E204611748AA25005C39DB /* PostcardPrinter.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51E2045F1748A890005C39DB /* PostcardPrinter.hpp */; };
-		52B8D1031D51558100F0075F /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B8D1021D51558100F0075F /* opencv2.framework */; };
+		52B8D10F1D52780A00F0075F /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B8D10E1D52780A00F0075F /* opencv2.framework */; };
 		52BED1471D514137007DFF5E /* SpatialFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52BED1431D514137007DFF5E /* SpatialFilter.cpp */; };
 		52BED1481D514137007DFF5E /* VideoProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52BED1451D514137007DFF5E /* VideoProcessor.cpp */; };
 		52BED1491D514146007DFF5E /* SpatialFilter.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 52BED1441D514137007DFF5E /* SpatialFilter.hpp */; };
@@ -63,7 +63,7 @@
 		51E2044E1747B307005C39DB /* text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = text.png; path = CvEffects/text.png; sourceTree = "<group>"; };
 		51E2045E1748A890005C39DB /* PostcardPrinter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PostcardPrinter.cpp; path = CvEffects/PostcardPrinter.cpp; sourceTree = SOURCE_ROOT; };
 		51E2045F1748A890005C39DB /* PostcardPrinter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PostcardPrinter.hpp; path = CvEffects/PostcardPrinter.hpp; sourceTree = SOURCE_ROOT; };
-		52B8D1021D51558100F0075F /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		52B8D10E1D52780A00F0075F /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		52BED1431D514137007DFF5E /* SpatialFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpatialFilter.cpp; sourceTree = "<group>"; };
 		52BED1441D514137007DFF5E /* SpatialFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpatialFilter.hpp; sourceTree = "<group>"; };
 		52BED1451D514137007DFF5E /* VideoProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VideoProcessor.cpp; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52B8D1031D51558100F0075F /* opencv2.framework in Frameworks */,
+				52B8D10F1D52780A00F0075F /* opencv2.framework in Frameworks */,
 				5168F9A91752464E00FC67D8 /* Accelerate.framework in Frameworks */,
 				51E2042B1747A1C3005C39DB /* Foundation.framework in Frameworks */,
 			);
@@ -128,7 +128,7 @@
 		51E2041E1747A1C3005C39DB = {
 			isa = PBXGroup;
 			children = (
-				52BED1421D5140E9007DFF5E /* Chapter15_DetectingFacialFeatures */,
+				52BED1421D5140E9007DFF5E /* DoSIC */,
 				51DDCAEA1780798500DA10F4 /* RetroFilter */,
 				51DDCAE91780794700DA10F4 /* PostcardPrinter */,
 				510745701750B46A00B6CCD9 /* FaceAnimator */,
@@ -149,7 +149,7 @@
 		51E204291747A1C3005C39DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				52B8D1021D51558100F0075F /* opencv2.framework */,
+				52B8D10E1D52780A00F0075F /* opencv2.framework */,
 				5168F9A7175245F000FC67D8 /* Accelerate.framework */,
 				51E2042A1747A1C3005C39DB /* Foundation.framework */,
 			);
@@ -177,7 +177,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		52BED1421D5140E9007DFF5E /* Chapter15_DetectingFacialFeatures */ = {
+		52BED1421D5140E9007DFF5E /* DoSIC */ = {
 			isa = PBXGroup;
 			children = (
 				52BED1431D514137007DFF5E /* SpatialFilter.cpp */,
@@ -185,7 +185,7 @@
 				52BED1451D514137007DFF5E /* VideoProcessor.cpp */,
 				52BED1461D514137007DFF5E /* VideoProcessor.hpp */,
 			);
-			name = Chapter15_DetectingFacialFeatures;
+			name = DoSIC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,7 +215,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "Alexander Shishkov & Kirill Kornyakov";
+				ORGANIZATIONNAME = "";
 			};
 			buildConfigurationList = 51E204221747A1C3005C39DB /* Build configuration list for PBXProject "CvEffects" */;
 			compatibilityVersion = "Xcode 3.2";
