@@ -195,7 +195,7 @@
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					83FA790D1748FE9000248405 = {
-						DevelopmentTeam = M7S68B4P65;
+						DevelopmentTeam = LKDK9ULBC3;
 					};
 				};
 			};
@@ -356,7 +356,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoSIC/DoSIC-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DoSIC/DoSIC-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = dakey860831zhang;
+				PRODUCT_BUNDLE_IDENTIFIER = dzzhdzzh;
 				PRODUCT_NAME = DoSIC;
 				WRAPPER_EXTENSION = app;
 			};
@@ -375,7 +375,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoSIC/DoSIC-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/DoSIC/DoSIC-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = dakey860831zhang;
+				PRODUCT_BUNDLE_IDENTIFIER = dzzhdzzh;
 				PRODUCT_NAME = DoSIC;
 				WRAPPER_EXTENSION = app;
 			};

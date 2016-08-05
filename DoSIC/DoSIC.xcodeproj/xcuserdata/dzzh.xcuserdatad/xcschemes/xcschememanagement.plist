@@ -4,15 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CvEffects.xcscheme</key>
+		<key>DoSIC.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>51E204261747A1C3005C39DB</key>
+		<key>83FA790D1748FE9000248405</key>
 		<dict>
 			<key>primary</key>
 			<true/>
