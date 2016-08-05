@@ -78,7 +78,7 @@
 {
     [videoCamera start];
     isCapturing = YES;
-    changeDetector = new VideoProcessor(100);
+    changeDetector = new VideoProcessor(30);
 //    faceAnimator = new FaceAnimator(parameters);
 }
 

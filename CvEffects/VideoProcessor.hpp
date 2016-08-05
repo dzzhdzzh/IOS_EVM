@@ -46,7 +46,7 @@ public:
     void setTemporalFilter(temporalFilterType type);
     
     // motion magnification
-    //    void motionMagnify(cv::Mat& input);
+    void motionMagnify(cv::Mat& input);
     
     // color magnification
     void colorMagnify(cv::Mat& input);
@@ -74,9 +74,9 @@ private:
     // cut-off wave length
     float lambda_c;
     // low cut-off
-    float fl;
+    float Fl;
     // high cut-off
-    float fh;
+    float Fh;
     // chromAttenuation
     float chromAttenuation;
     // delta

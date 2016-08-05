@@ -5,13 +5,13 @@
 
 VideoProcessor::VideoProcessor(int frameInterval)
 : Interval(frameInterval)
-, Frate(24)
+, Frate(30)
 , fnumber(0)
 , levels(4)
-, alpha(500)
+, alpha(200)
 , lambda_c(80)
-, fl(50.0/60.0)
-, fh(70.0/60.0)
+, Fl(50.0/60.0)
+, Fh(70.0/60.0)
 , chromAttenuation(1)
 , delta(0)
 , exaggeration_factor(2.0)
@@ -71,8 +71,8 @@ void VideoProcessor::temporalFilter(const cv::Mat &src,
 void VideoProcessor::temporalIIRFilter(const cv::Mat &src,
                                        cv::Mat &dst)
 {
-    cv::Mat temp1 = (1-fh)*lowpass1[curLevel] + fh*src;
-    cv::Mat temp2 = (1-fl)*lowpass2[curLevel] + fl*src;
+    cv::Mat temp1 = (1-Fh)*lowpass1[curLevel] + Fh*src;
+    cv::Mat temp2 = (1-Fl)*lowpass2[curLevel] + Fl*src;
     lowpass1[curLevel] = temp1;
     lowpass2[curLevel] = temp2;
     dst = lowpass1[curLevel] - lowpass2[curLevel];
@@ -103,31 +103,39 @@ void VideoProcessor::temporalIdealFilter(const cv::Mat &src,
         int height = cv::getOptimalDFTSize(current.rows);
         
         cv::copyMakeBorder(current, tempImg,
-                           0, height - current.rows,
+                           0, 0,
                            0, width - current.cols,
                            cv::BORDER_CONSTANT, cv::Scalar::all(0));
-        
+        cv::Mat planes[] = {cv::Mat_<float>(tempImg), cv::Mat::zeros(tempImg.size(), CV_32F)};
+        cv::Mat complexI;
+        merge(planes, 2, complexI);
+//        cv::dft(complexI, complexI, cv::DFT_ROWS|cv::DFT_COMPLEX_OUTPUT|cv::DFT_SCALE);
+//        cv::split(complexI, planes);
+
         // do the DFT
-        cv::dft(tempImg, tempImg, cv::DFT_ROWS | cv::DFT_SCALE);
+        cv::dft(complexI, complexI, cv::DFT_ROWS | cv::DFT_SCALE);
         
         // construct the filter
         cv::Mat filter = tempImg.clone();
-        createIdealBandpassFilter(filter, fl, fh, Frate);
+        createIdealBandpassFilter(filter, Fl, Fh, Frate);
         
         // apply filter
-        cv::mulSpectrums(tempImg, filter, tempImg, cv::DFT_ROWS);
+        cv::Mat filterplanes[] = {cv::Mat_<float>(filter), cv::Mat_<float>(filter)};
+        cv::Mat complexfilter;
+        merge(filterplanes, 2, complexfilter);
+        cv::mulSpectrums(complexI, complexfilter, complexI, 0);
         
         // do the inverse DFT on filtered image
-        cv::idft(tempImg, tempImg, cv::DFT_ROWS | cv::DFT_SCALE);
-        
+        cv::idft(complexI, complexI, cv::DFT_ROWS);
+        cv::split(complexI, planes);
         // copy back to the current channel
-        tempImg(cv::Rect(0, 0, current.cols, current.rows)).copyTo(channels[i]);
+        planes[0](cv::Rect(0, 0, current.cols, current.rows)).copyTo(channels[i]);
     }
     // merge channels
     cv::merge(channels, 3, dst);
     
     // normalize the filtered image
-    cv::normalize(dst, dst, 0, 1, CV_MINMAX);
+//    cv::normalize(dst, dst, 0, 1, CV_MINMAX);
 }
 
 /**
@@ -149,7 +157,8 @@ void VideoProcessor::amplify(const cv::Mat &src, cv::Mat &dst)
                 dst = src * cv::min(alpha, currAlpha);
             break;
         case GAUSSIAN:
-            dst = src * alpha;
+//            cv::Mat tmp;
+            dst = src.clone() * alpha;
             break;
         default:
             break;
@@ -227,8 +236,8 @@ void VideoProcessor::createIdealBandpassFilter(cv::Mat &filter, double fl, doubl
     int width = filter.cols;
     int height = filter.rows;
     
-    fl = 2 * fl * width / rate;
-    fh = 2 * fh * width / rate;
+    fl = fl * width / rate;
+    fh = fh * width / rate;
     
     double response;
     
@@ -377,6 +386,7 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
 {
     Frate = 1.0 / (((double)cv::getTickCount() - (double) t_name) / (double) cv::getTickFrequency());
     t_name = cv::getTickCount();
+    std::cout << "frame rate: " << Frate << std::endl;
     cv::Mat rgb, output;
     cv::Mat channelA(input.rows, input.cols, CV_8UC1, 1);
     cv::extractChannel(input, channelA, 3);
@@ -392,7 +402,7 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
     cv::Mat videoMat;
     // concatenate filtered image
     cv::Mat filtered;
-    
+    std::cout << "new: " << Frate << std::endl;
     if (frames.size() < Interval - 1) {
         rgb.convertTo(output, CV_32FC3);
         frames.push_back(output.clone());
@@ -417,7 +427,10 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
         // 4. amplify color motion
         amplify(filtered, filtered);
         //        hrMat = filtered.clone();
-        cv::extractChannel(filtered, hrMat, 0);
+        cv::Mat R;
+        cv::extractChannel(filtered, R, 2);
+        cv::extractChannel(filtered, hrMat, 1);
+        hrMat = hrMat - R;
         filteredFrames.clear();
         
         // 5. de-concat the filtered image into filtered frames
@@ -425,7 +438,8 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
         //        hrMat = filteredFrames.back().clone();
         // up-sample the motion image
         upsamplingFromGaussianPyramid(filteredFrames.back(), levels, motion);
-        resize(motion, motion, frames.back().size());
+        
+//        resize(filteredFrames.back(), motion, frames.back().size());
         output = frames.back() + motion;
         double minVal, maxVal;
         minMaxLoc(output, &minVal, &maxVal); //find minimum and maximum intensities
@@ -433,25 +447,26 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
         std::vector<cv::Mat> out;
         cv::split(output, out);
         out.push_back(channelA);
-        
         cv::merge(out, input);
         frames.pop_front();
         downSampledFrames.pop_front();
-        
     }
 }
 
 
 void fft1DMag(cv::Mat& src, cv::Mat& dst){
-    cv::Mat planes[] = {cv::Mat_<float>(src), cv::Mat::zeros(src.size(), CV_32F)};
+    cv::Mat padded;                            //expand input image to optimal size
+    int n = cv::getOptimalDFTSize( src.cols ); // on the border add zero pixels
+    copyMakeBorder(src, padded, 0, 0, 0, 64 - src.cols, cv::BORDER_CONSTANT, cv::Scalar::all(0));
+    cv::Mat planes[] = {cv::Mat_<float>(padded), cv::Mat::zeros(padded.size(), CV_32F)};
     cv::Mat complexI;
     merge(planes, 2, complexI);
-    cv::dft(complexI, complexI, cv::DFT_ROWS|cv::DFT_COMPLEX_OUTPUT);
+    cv::dft(complexI, complexI, cv::DFT_ROWS|cv::DFT_COMPLEX_OUTPUT|cv::DFT_SCALE);
     cv::split(complexI, planes);
     cv::magnitude(planes[0], planes[1], planes[0]);
     cv::Mat magI = planes[0];
     reduce(magI,dst, 0, CV_REDUCE_AVG);
-    dst.at<float>(0, 0) = 0;
+//    dst.at<float>(0, 0) = 0;
 }
 
 
@@ -460,9 +475,10 @@ double VideoProcessor::heartRate(){
     //    std::cout << Frate << std::endl;
     if (startHR){
         fft1DMag(hrMat, rowMean);
+//        std::cout << rowMean << std::endl;
         cv::Point maxLoc;
-        cv::minMaxLoc(rowMean.colRange(0, Interval / 2 - 1), NULL, NULL, NULL, &maxLoc);
-        HR = 60.0 / Interval * Frate * (maxLoc.x);
+        cv::minMaxLoc(rowMean.colRange(0, rowMean.cols / 2.0 - 1), NULL, NULL, NULL, &maxLoc);
+        HR = 60.0 / rowMean.cols * Frate * (maxLoc.x);
         std::cout << HR << std::endl;
         return HR;
     }
