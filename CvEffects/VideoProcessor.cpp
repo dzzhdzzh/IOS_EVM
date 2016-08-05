@@ -7,11 +7,12 @@ VideoProcessor::VideoProcessor(int frameInterval)
 : Interval(frameInterval)
 , Frate(30)
 , fnumber(0)
+, hrnumber(500)
 , levels(4)
 , alpha(200)
 , lambda_c(80)
 , Fl(40.0/60.0)
-, Fh(80.0/60.0)
+, Fh(80/60.0)
 , chromAttenuation(1)
 , delta(0)
 , exaggeration_factor(2.0)
@@ -46,14 +47,14 @@ bool VideoProcessor::spatialFilter(const cv::Mat &src, std::deque<cv::Mat> &pyra
  * @param dst	-	destinate image
  */
 void VideoProcessor::temporalFilter(const cv::Mat &src,
-                                    cv::Mat &dst)
+                                    cv::Mat &dst,cv::Mat &dst_norm)
 {
     switch(temporalType) {
         case IIR:       // IIR bandpass filter
             temporalIIRFilter(src, dst);
             break;
         case IDEAL:     // Ideal bandpass filter
-            temporalIdealFilter(src, dst);
+            temporalIdealFilter(src, dst, dst_norm);
             break;
         default:
             break;
@@ -87,7 +88,7 @@ void VideoProcessor::temporalIIRFilter(const cv::Mat &src,
  *
  */
 void VideoProcessor::temporalIdealFilter(const cv::Mat &src,
-                                         cv::Mat &dst)
+                                         cv::Mat &dst, cv::Mat &dst_norm)
 {
     cv::Mat channels[3];
     
@@ -119,7 +120,7 @@ void VideoProcessor::temporalIdealFilter(const cv::Mat &src,
         // construct the filter
         cv::Mat filter = tempImg.clone();
         createIdealBandpassFilter(filter, Fl, Fh, Frate);
-        
+        //std::cout<<filter.rowRange(0, 1)<<std::endl;
         // apply filter
         cv::Mat filterplanes[] = {cv::Mat_<float>(filter), cv::Mat_<float>(filter)};
         cv::Mat complexfilter;
@@ -136,7 +137,7 @@ void VideoProcessor::temporalIdealFilter(const cv::Mat &src,
     cv::merge(channels, 3, dst);
     
     // normalize the filtered image
-//    cv::normalize(dst, dst, 0, 1, CV_MINMAX);
+    cv::normalize(dst, dst_norm, 0, 1, CV_MINMAX);
 }
 
 /**
@@ -176,8 +177,8 @@ void VideoProcessor::attenuate(cv::Mat &src, cv::Mat &dst)
 {
     cv::Mat planes[3];
     cv::split(src, planes);
+    planes[0] = planes[0] * chromAttenuation;
     planes[1] = planes[1] * chromAttenuation;
-    planes[2] = planes[2] * chromAttenuation;
     cv::merge(planes, 3, dst);
 }
 
@@ -193,8 +194,8 @@ void VideoProcessor::concat(const std::deque<cv::Mat> &frames,
                             cv::Mat &dst)
 {
     cv::Size frameSize = frames.at(0).size();
-    cv::Mat temp(frameSize.width*frameSize.height, Interval, CV_32FC3);
-    for (int i = 0; i < Interval; ++i) {
+    cv::Mat temp(frameSize.width*frameSize.height, frames.size(), CV_32FC3);
+    for (int i = 0; i < frames.size(); ++i) {
         // get a frame if any
         cv::Mat out = frames.at(i);
         // reshape the frame into one column
@@ -215,9 +216,9 @@ void VideoProcessor::concat(const std::deque<cv::Mat> &frames,
  */
 void VideoProcessor::deConcat(const cv::Mat &src,
                               const cv::Size &frameSize,
-                              std::deque<cv::Mat> &frames)
+                              std::vector<cv::Mat> &frames)
 {
-    for (int i = 0; i < Interval; ++i) {    // get a line if any
+    for (int i = 0; i < src.cols; ++i) {    // get a line if any
         cv::Mat line = src.col(i).clone();
         cv::Mat reshaped = line.reshape(3, frameSize.height).clone();
         frames.push_back(reshaped);
@@ -246,6 +247,7 @@ void VideoProcessor::createIdealBandpassFilter(cv::Mat &filter, double fl, doubl
         for (int j = 0; j < width; ++j) {
             // filter response
             if (j >= fl && j <= fh)
+            //if ((j >= fl && j <= fh) || ((j >= width-fh-1) && (j<= width-fl-1)))
                 response = 1.0f;
             else
                 response = 0.0f;
@@ -403,9 +405,11 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
     cv::Mat videoMat;
     // concatenate filtered image
     cv::Mat filtered;
+    cv::Mat filtered_norm;
+    cv::Mat R;
     //std::cout << "new: " << Frate << std::endl;
     if (frames.size() < Interval - 1) {
-        rgb.convertTo(output, CV_32FC3,1./255.);
+        rgb.convertTo(output, CV_32FC3);
         frames.push_back(output.clone());
         // spatial filtering
         std::deque<cv::Mat> pyramid;
@@ -413,8 +417,7 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
         downSampledFrames.push_back(pyramid.at(levels-1));
     }
     else{
-        startHR = 1;
-        rgb.convertTo(output, CV_32FC3,1./255.);
+        rgb.convertTo(output, CV_32FC3);
         frames.push_back(output.clone());
         // spatial filtering
         std::deque<cv::Mat> pyramid;
@@ -422,31 +425,64 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
         downSampledFrames.push_back(pyramid.at(levels-1));
         concat(downSampledFrames, videoMat);
         
-        // 3. temporal filtering
-        temporalFilter(videoMat, filtered);
+        // push the HR Frames queue
+        hrFrames.push_back(pyramid.at(levels-1));
+        if(hrFrames.size() > hrnumber)
+        {
+            startHR = 1;
+            hrFrames.pop_front();
+            cv::Mat tempMat;
+            concat(hrFrames, tempMat);
+            cv::extractChannel(tempMat, R, 2);
+            hrMat = R;
+            //cv::extractChannel(tempMat, hrMat, 1);
+            //hrMat = hrMat - R;
+        }
+
         
+        // 3. temporal filtering
+        temporalFilter(videoMat, filtered,filtered_norm);
+        //std::cout<<filtered.col(99)<<std::endl;
         // 4. amplify color motion
         amplify(filtered, filtered);
-        //        hrMat = filtered.clone();
+        amplify(filtered_norm, filtered_norm);
+        
+        double minVal, maxVal;
+        cv::extractChannel(filtered, R , 2);
+        minMaxLoc(R, &minVal, &maxVal); //find minimum and maximum intensities
+        //cv::Scalar temp_mean = cv::mean(R);
+        //std::cout<<maxVal-minVal<<std::endl;
+        /*
         cv::Mat R;
         cv::extractChannel(filtered, R, 2);
         cv::extractChannel(filtered, hrMat, 1);
-        hrMat = hrMat - R;
+        //hrMat = hrMat - R;
+        hrMat = R;
+        */
+        
+        filterednormFrames.clear();
         filteredFrames.clear();
         
         //std::cout<<cv::mean(R)[0]<<std::endl;
         
         // 5. de-concat the filtered image into filtered frames
-        deConcat(filtered, downSampledFrames.at(0).size(), filteredFrames);
-        //        hrMat = filteredFrames.back().clone();
+        deConcat(filtered_norm, downSampledFrames.at(0).size(), filterednormFrames);
+        
+        
         // up-sample the motion image
-        upsamplingFromGaussianPyramid(filteredFrames.back(), levels, motion);
+        upsamplingFromGaussianPyramid(filterednormFrames.back(), levels, motion);
         
 //        resize(filteredFrames.back(), motion, frames.back().size());
         output = frames.back() + motion;
-        double minVal, maxVal;
-        minMaxLoc(output, &minVal, &maxVal); //find minimum and maximum intensities
-        output.convertTo(output, CV_8UC3, 255.0);
+        std::cout<<maxVal - minVal<<std::endl;
+        if(maxVal-minVal > 150)
+        {
+            minMaxLoc(output, &minVal, &maxVal); //find minimum and maximum intensities
+            output.convertTo(output, CV_8UC3, 255.0/(maxVal - minVal),-minVal * 255.0/(maxVal - minVal));
+        }
+        else
+            frames.back().convertTo(output,CV_8UC3);
+        
         std::vector<cv::Mat> out;
         cv::split(output, out);
         out.push_back(channelA);
@@ -457,35 +493,59 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
 }
 
 
-void fft1DMag(cv::Mat& src, cv::Mat& dst){
+void VideoProcessor::fft1DMag(cv::Mat& src, cv::Mat& dst){
     cv::Mat padded;                            //expand input image to optimal size
     int n = cv::getOptimalDFTSize( src.cols ); // on the border add zero pixels
-    copyMakeBorder(src, padded, 0, 0, 0, 512 - src.cols, cv::BORDER_CONSTANT, cv::Scalar::all(0));
+    copyMakeBorder(src, padded, 0, 0, 0, n - src.cols, cv::BORDER_CONSTANT, cv::Scalar::all(0));
     cv::Mat planes[] = {cv::Mat_<float>(padded), cv::Mat::zeros(padded.size(), CV_32F)};
     cv::Mat complexI;
     merge(planes, 2, complexI);
-    cv::dft(complexI, complexI, cv::DFT_ROWS|cv::DFT_COMPLEX_OUTPUT|cv::DFT_SCALE);
+    cv::dft(complexI, complexI, cv::DFT_ROWS|cv::DFT_COMPLEX_OUTPUT);
+    
+    // construct the filter
+    cv::Mat filter = padded.clone();
+    createIdealBandpassFilter(filter, Fl, Fh, Frate);
+    // apply filter
+    cv::Mat filterplanes[] = {cv::Mat_<float>(filter), cv::Mat_<float>(filter)};
+    cv::Mat complexfilter;
+    merge(filterplanes, 2, complexfilter);
+    cv::mulSpectrums(complexI, complexfilter, complexI, 0);
+    
     cv::split(complexI, planes);
     cv::magnitude(planes[0], planes[1], planes[0]);
     cv::Mat magI = planes[0];
     reduce(magI,dst, 0, CV_REDUCE_AVG);
-//    dst.at<float>(0, 0) = 0;
+    //std::cout<<dst<<std::endl;
+    //dst.at<float>(0, 0) = 0;
 }
 
 
 double VideoProcessor::heartRate(){
     cv::Mat rowMean;
     //    std::cout << Frate << std::endl;
-    if (startHR){
+    if (startHR)
+    {
         fft1DMag(hrMat, rowMean);
 //        std::cout << rowMean << std::endl;
         cv::Point maxLoc;
         double maxVal;
         cv::minMaxLoc(rowMean.colRange(0, rowMean.cols / 2.0 - 1), NULL, &maxVal, NULL, &maxLoc);
-        //std::cout<<maxVal<<" "<<maxLoc.x<<std::endl;
-        HR = 60.0 / rowMean.cols * Frate * (maxLoc.x);
-        std::cout << HR << std::endl;
-        return HR;
+        //std::cout<<HR<<" "<<maxVal<<" "<<maxLoc.x<<std::endl;
+        double HR_current;
+        HR_current = 60.0 / rowMean.cols * Frate * (maxLoc.x);
+        hrResult.push_back(HR_current);
+        if (hrResult.size()>100)
+        {
+            hrResult.pop_front();
+            double tempsum = 0;
+            for(int k=0;k<hrResult.size();k++)
+                tempsum += hrResult[k];
+            HR = tempsum/hrResult.size();
+            //std::cout << maxVal << "   "<<HR_current<<"  "<<HR<<std::endl;
+            return HR;
+        }
+        else
+            return 0.0;
     }
     else
         return 0.0;

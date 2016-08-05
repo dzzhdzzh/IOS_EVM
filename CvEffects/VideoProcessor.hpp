@@ -52,6 +52,7 @@ public:
     void colorMagnify(cv::Mat& input);
     
     double heartRate();
+    void fft1DMag(cv::Mat& src, cv::Mat& dst);
     
 private:
     
@@ -91,7 +92,12 @@ private:
     // down-sampled frames
     std::deque<cv::Mat> downSampledFrames;
     
-    std::deque<cv::Mat> filteredFrames;
+    std::vector<cv::Mat> filteredFrames;
+    std::vector<cv::Mat> filterednormFrames;
+    std::deque<cv::Mat> hrFrames;
+    std::deque<double> hrResult;
+    int hrnumber;
+    
     cv::Mat hrMat;
     // low pass filters for IIR
     std::deque<cv::Mat> lowpass1;
@@ -108,7 +114,7 @@ private:
     
     // temporal filtering
     void temporalFilter(const cv::Mat &src,
-                        cv::Mat &dst);
+                        cv::Mat &dst,cv::Mat &dst_norm);
     
     // temporal IIR filtering
     void temporalIIRFilter(const cv::Mat &src,
@@ -116,7 +122,7 @@ private:
     
     // temporal ideal bandpass filtering
     void temporalIdealFilter(const cv::Mat &src,
-                             cv::Mat &dst);
+                             cv::Mat &dst, cv::Mat &dst_norm);
     
     // amplify motion
     void amplify(const cv::Mat &src, cv::Mat &dst);
@@ -128,7 +134,7 @@ private:
     void concat(const std::deque<cv::Mat> &frames, cv::Mat &dst);
     
     // de-concat the concatnate image into frames
-    void deConcat(const cv::Mat &src, const cv::Size &frameSize, std::deque<cv::Mat> &frames);
+    void deConcat(const cv::Mat &src, const cv::Size &frameSize, std::vector<cv::Mat> &frames);
     
     // create an ideal bandpass processor
     void createIdealBandpassFilter(cv::Mat &filter, double fl, double fh, double rate);
