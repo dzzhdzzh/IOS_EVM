@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../CvEffects/VideoProcessor.cpp"
-            timestampString = "492121111.59382"
+            timestampString = "492329844.734976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "548"
-            endingLineNumber = "548"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
             landmarkName = "VideoProcessor::heartRate()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../CvEffects/VideoProcessor.cpp"
-            timestampString = "492121111.59382"
+            timestampString = "492329844.734976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "548"
-            endingLineNumber = "548"
+            startingLineNumber = "473"
+            endingLineNumber = "473"
             landmarkName = "VideoProcessor::heartRate()"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../CvEffects/VideoProcessor.cpp"
-            timestampString = "492121111.59382"
+            timestampString = "492329844.734976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "VideoProcessor::fft1DMag(cv::Mat&amp; src, cv::Mat&amp; dst)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../CvEffects/VideoProcessor.cpp"
-            timestampString = "492121111.59382"
+            timestampString = "492329844.734976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
             landmarkName = "VideoProcessor::heartRate()"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../CvEffects/VideoProcessor.cpp"
-            timestampString = "492121111.59382"
+            timestampString = "492329844.734976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "469"
-            endingLineNumber = "469"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
             landmarkName = "VideoProcessor::colorMagnify(cv::Mat&amp; input)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../CvEffects/VideoProcessor.cpp"
-            timestampString = "492065506.722448"
+            timestampString = "492329844.734976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "VideoProcessor::deConcat(const cv::Mat &amp;src, const cv::Size &amp;frameSize, std::vector&lt;cv::Mat&gt; &amp;frames)"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../CvEffects/VideoProcessor.cpp"
-            timestampString = "492121111.59382"
+            timestampString = "492329844.734976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
             landmarkName = "VideoProcessor::heartRate()"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,12 +122,124 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../CvEffects/VideoProcessor.cpp"
-            timestampString = "492121111.59382"
+            timestampString = "492329844.734976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "VideoProcessor::heartRate()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../CvEffects/VideoProcessor.cpp"
+            timestampString = "492329844.734976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
+            landmarkName = "VideoProcessor::colorMagnify(cv::Mat&amp; input)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../CvEffects/VideoProcessor.cpp"
+            timestampString = "492329844.734976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "VideoProcessor::temporalIdealFilter(const cv::Mat &amp;src, cv::Mat &amp;dst, cv::Mat &amp;dst_norm)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../CvEffects/VideoProcessor.cpp"
+            timestampString = "492329844.734976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "VideoProcessor::temporalIdealFilter(const cv::Mat &amp;src, cv::Mat &amp;dst, cv::Mat &amp;dst_norm)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../CvEffects/VideoProcessor.cpp"
+            timestampString = "492329844.734976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "VideoProcessor::temporalIdealFilter(const cv::Mat &amp;src, cv::Mat &amp;dst, cv::Mat &amp;dst_norm)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../CvEffects/VideoProcessor.cpp"
+            timestampString = "492329844.734976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "VideoProcessor::temporalIdealFilter(const cv::Mat &amp;src, cv::Mat &amp;dst, cv::Mat &amp;dst_norm)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../CvEffects/VideoProcessor.cpp"
+            timestampString = "492329844.734976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "VideoProcessor::temporalIdealFilter(const cv::Mat &amp;src, cv::Mat &amp;dst, cv::Mat &amp;dst_norm)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../CvEffects/VideoProcessor.cpp"
+            timestampString = "492328671.985099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "VideoProcessor::temporalIdealFilter(const cv::Mat &amp;src, cv::Mat &amp;dst, cv::Mat &amp;dst_norm)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

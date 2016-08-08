@@ -97,6 +97,8 @@ private:
     std::deque<cv::Mat> hrFrames;
     std::deque<double> hrResult;
     int hrnumber;
+    bool visualflag;
+    cv::Size imgGaussianSize;
     
     cv::Mat hrMat;
     // low pass filters for IIR

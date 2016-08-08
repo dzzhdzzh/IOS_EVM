@@ -1,18 +1,18 @@
 
 
-
 #include "VideoProcessor.hpp"
 
 VideoProcessor::VideoProcessor(int frameInterval)
 : Interval(frameInterval)
 , Frate(30)
 , fnumber(0)
-, hrnumber(500)
+, visualflag(false)
+, hrnumber(400)
 , levels(4)
 , alpha(200)
 , lambda_c(80)
 , Fl(40.0/60.0)
-, Fh(80/60.0)
+, Fh(120.0/60.0)
 , chromAttenuation(1)
 , delta(0)
 , exaggeration_factor(2.0)
@@ -123,9 +123,42 @@ void VideoProcessor::temporalIdealFilter(const cv::Mat &src,
         //std::cout<<filter.rowRange(0, 1)<<std::endl;
         // apply filter
         cv::Mat filterplanes[] = {cv::Mat_<float>(filter), cv::Mat_<float>(filter)};
-        cv::Mat complexfilter;
+        cv::Mat complexfilter,roifft;
+        cv::Mat avgfft;
+        //cv::Mat avgfft(floor(imgGaussianSize.width*0.7)*floor(imgGaussianSize.height*0.7), complexI.cols, CV_32FC1);
         merge(filterplanes, 2, complexfilter);
         cv::mulSpectrums(complexI, complexfilter, complexI, 0);
+
+        if(i==2)
+        {
+            cv::split(complexI, planes);
+            cv::magnitude(planes[0], planes[1], planes[0]);
+            cv::Mat magI = planes[0];
+            
+            //std::cout<<magI<<std::endl;
+            /*
+            for(int k=0;k<magI.cols;k++)
+            {
+                roifft = magI.col(k).clone();
+                roifft = roifft.reshape(0,imgGaussianSize.height);
+                cv::Rect roi = cv::Rect(0.15*imgGaussianSize.width, 0.15*imgGaussianSize.height, imgGaussianSize.width*0.7, imgGaussianSize.height*0.7);
+                roifft = roifft(roi).clone();
+                roifft = roifft.reshape(0,roifft.cols*roifft.rows).clone();
+                cv::Mat line = avgfft.col(k);
+                roifft.copyTo(line);
+            }
+            */
+            //std::cout<<avgfft<<std::endl;
+            reduce(magI,avgfft, 0, CV_REDUCE_AVG);
+            cv::Point maxLoc;
+            double maxVal;
+            cv::minMaxLoc(avgfft.colRange(0, avgfft.cols / 2.0 - 1), NULL, &maxVal, NULL, &maxLoc);
+            //std::cout<< maxVal <<"  "<<maxLoc.x<<"   "<<60.0 / avgfft.cols * Frate * (maxLoc.x)<<std::endl;
+            if(maxVal<0)//0.07)
+                visualflag = false;
+            else
+                visualflag = true;
+        }
         
         // do the inverse DFT on filtered image
         cv::idft(complexI, complexI, cv::DFT_ROWS);
@@ -246,8 +279,8 @@ void VideoProcessor::createIdealBandpassFilter(cv::Mat &filter, double fl, doubl
     for (int i = 0; i < height; ++i) {
         for (int j = 0; j < width; ++j) {
             // filter response
-            if (j >= fl && j <= fh)
-            //if ((j >= fl && j <= fh) || ((j >= width-fh-1) && (j<= width-fl-1)))
+            //if (j >= fl && j <= fh)
+            if ((j >= fl && j <= fh) || ((j >= width-fh-1) && (j<= width-fl-1)))
                 response = 1.0f;
             else
                 response = 0.0f;
@@ -281,105 +314,6 @@ void VideoProcessor::setTemporalFilter(temporalFilterType type)
     temporalType = type;
 }
 
-
-
-
-/**
- * motionMagnify	-	eulerian motion magnification
- *
- */
-//void VideoProcessor::motionMagnify(cv::Mat& input)
-// {
-//	// set filter
-//	setSpatialFilter(LAPLACIAN);
-//	setTemporalFilter(IIR);
-//
-//	// output frame
-//	cv::Mat output;
-//
-//	// motion image
-//	cv::Mat motion;
-//
-//	std::deque<cv::Mat> pyramid;
-//	std::deque<cv::Mat> filtered;
-//
-//
-//	while (true) {
-//
-//		cv::resize(input, input, cv::Size(320, 180), 0, 0,   cv::INTER_LINEAR);
-////		imshow("input", input);
-//		input.convertTo(input, CV_32FC3, 1.0/255.0f);
-//
-//		// 1. convert to Lab color space
-//		cv::cvtColor(input, input, CV_BGR2Lab);
-//
-//		// 2. spatial filtering one frame
-//		cv::Mat s = input.clone();
-//		spatialFilter(s, pyramid);
-//
-//		// 3. temporal filtering one frame's pyramid
-//		// and amplify the motion
-//		if (fnumber == 0){      // is first frame
-//			lowpass1 = pyramid;
-//			lowpass2 = pyramid;
-//			filtered = pyramid;
-//		} else {
-//			for (int i=0; i<levels; ++i) {
-//				curLevel = i;
-//				temporalFilter(pyramid.at(i), filtered.at(i));
-//			}
-//
-//			// amplify each spatial frequency bands
-//			// according to Figure 6 of paper
-//			cv::Size filterSize = filtered.at(0).size();
-//			int w = filterSize.width;
-//			int h = filterSize.height;
-//
-//			delta = lambda_c/8.0/(1.0+alpha);
-//			// the factor to boost alpha above the bound
-//			// (for better visualization)
-//			exaggeration_factor = 2.0;
-//
-//			// compute the representative wavelength lambda
-//			// for the lowest spatial frequency band of Laplacian pyramid
-//			lambda = sqrt(w*w + h*h)/3;  // 3 is experimental constant
-//
-//			for (int i=levels; i>=0; i--) {
-//				curLevel = i;
-//
-//				amplify(filtered.at(i), filtered.at(i));
-//
-//				// go one level down on pyramid
-//				// representative lambda will reduce by factor of 2
-//				lambda /= 2.0;
-//			}
-//		}
-//
-//		// 4. reconstruct motion image from filtered pyramid
-//		reconImgFromLaplacianPyramid(filtered, levels, motion);
-//
-//		// 5. attenuate I, Q channels
-//		attenuate(motion, motion);
-//
-//		// 6. combine source frame and motion image
-//		if (fnumber > 0)    // don't amplify first frame
-//			s += motion;
-//
-//		// 7. convert back to rgb color space and CV_8UC3
-//		output = s.clone();
-//		cv::cvtColor(output, output, CV_Lab2BGR);
-//		output.convertTo(output, CV_8UC3, 255.0, 1.0/255.0);
-//
-//		// write the frame to the temp file
-//		// tempWriter.write(output);
-//
-//		// update process
-////		std::string msg= "Processing...";
-////		imshow("output", output);
-////		cv::waitKey(1);
-//		fnumber++;
-//	}
-//}
 
 /**
  * colorMagnify	-	color magnification
@@ -425,8 +359,11 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
         downSampledFrames.push_back(pyramid.at(levels-1));
         concat(downSampledFrames, videoMat);
         
+        imgGaussianSize = pyramid.at(levels-1).size();
+        
         // push the HR Frames queue
-        hrFrames.push_back(pyramid.at(levels-1));
+        //if(fnumber==0)
+            hrFrames.push_back(pyramid.at(levels-1));
         if(hrFrames.size() > hrnumber)
         {
             startHR = 1;
@@ -434,36 +371,22 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
             cv::Mat tempMat;
             concat(hrFrames, tempMat);
             cv::extractChannel(tempMat, R, 2);
-            hrMat = R;
-            //cv::extractChannel(tempMat, hrMat, 1);
-            //hrMat = hrMat - R;
+            //hrMat = R;
+            cv::extractChannel(tempMat, hrMat, 1);
+            hrMat = hrMat - R;
         }
+        else
+            startHR = 0;
 
         
         // 3. temporal filtering
-        temporalFilter(videoMat, filtered,filtered_norm);
-        //std::cout<<filtered.col(99)<<std::endl;
-        // 4. amplify color motion
-        amplify(filtered, filtered);
-        amplify(filtered_norm, filtered_norm);
+        temporalFilter(videoMat, filtered, filtered_norm);
         
-        double minVal, maxVal;
-        cv::extractChannel(filtered, R , 2);
-        minMaxLoc(R, &minVal, &maxVal); //find minimum and maximum intensities
-        //cv::Scalar temp_mean = cv::mean(R);
-        //std::cout<<maxVal-minVal<<std::endl;
-        /*
-        cv::Mat R;
-        cv::extractChannel(filtered, R, 2);
-        cv::extractChannel(filtered, hrMat, 1);
-        //hrMat = hrMat - R;
-        hrMat = R;
-        */
+        // 4. amplify color motion
+        amplify(filtered_norm, filtered_norm);
         
         filterednormFrames.clear();
         filteredFrames.clear();
-        
-        //std::cout<<cv::mean(R)[0]<<std::endl;
         
         // 5. de-concat the filtered image into filtered frames
         deConcat(filtered_norm, downSampledFrames.at(0).size(), filterednormFrames);
@@ -472,11 +395,12 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
         // up-sample the motion image
         upsamplingFromGaussianPyramid(filterednormFrames.back(), levels, motion);
         
-//        resize(filteredFrames.back(), motion, frames.back().size());
+        // resize(filteredFrames.back(), motion, frames.back().size());
         output = frames.back() + motion;
-        std::cout<<maxVal - minVal<<std::endl;
-        if(maxVal-minVal > 150)
+        
+        if(visualflag)
         {
+            double minVal, maxVal;
             minMaxLoc(output, &minVal, &maxVal); //find minimum and maximum intensities
             output.convertTo(output, CV_8UC3, 255.0/(maxVal - minVal),-minVal * 255.0/(maxVal - minVal));
         }
@@ -490,6 +414,7 @@ void VideoProcessor::colorMagnify(cv::Mat& input)
         frames.pop_front();
         downSampledFrames.pop_front();
     }
+    fnumber++;
 }
 
 
@@ -534,14 +459,14 @@ double VideoProcessor::heartRate(){
         double HR_current;
         HR_current = 60.0 / rowMean.cols * Frate * (maxLoc.x);
         hrResult.push_back(HR_current);
-        if (hrResult.size()>100)
+        if (hrResult.size()>30)
         {
             hrResult.pop_front();
             double tempsum = 0;
             for(int k=0;k<hrResult.size();k++)
                 tempsum += hrResult[k];
             HR = tempsum/hrResult.size();
-            //std::cout << maxVal << "   "<<HR_current<<"  "<<HR<<std::endl;
+            std::cout << maxVal <<"  "<<maxLoc.x << "   "<<HR_current<<"  "<<HR<<std::endl;
             return HR;
         }
         else
