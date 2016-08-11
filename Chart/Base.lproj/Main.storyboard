@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HeartMonitorGUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleAspectFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="667" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZf-9T-ltH" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-UT-vRX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
+                            </imageView>
+                            <view contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0m-m1-JUL">
+                                <rect key="frame" x="0.0" y="500" width="375" height="167"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="4tO-xd-ru6">
+                                        <rect key="frame" x="16" y="56" width="86" height="94"/>
+                                        <accessibility key="accessibilityConfiguration" label="uiHeart">
+                                            <bool key="isElement" value="NO"/>
+                                        </accessibility>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hW7-sW-LpQ">
+                                        <rect key="frame" x="0.0" y="61" width="118" height="74"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="oT3-Q2-zQa">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <items>
+                                            <barButtonItem title="           Original" id="Bhr-Bp-lG8">
+                                                <color key="tintColor" red="0.98431372549019602" green="0.0" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="btnOriginal:" destination="BYZ-38-t0r" id="BRQ-4I-Hj8"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="      Magnified" id="BjU-rZ-FgK">
+                                                <color key="tintColor" red="0.98431372549019602" green="0.0" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="btnMagnified:" destination="BYZ-38-t0r" id="Tej-Zj-r8I"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="      History" id="SVf-Md-ybd">
+                                                <color key="tintColor" red="0.98431372549019602" green="0.0" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="btnHistory:" destination="BYZ-38-t0r" id="GcO-AE-WjB"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart2" translatesAutoresizingMaskIntoConstraints="NO" id="ubq-Yl-5kB">
+                                        <rect key="frame" x="147" y="56" width="86" height="94"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQC-es-jsR">
+                                        <rect key="frame" x="131" y="61" width="118" height="74"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BT Heart Monitor" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWZ-g8-OHe">
+                                        <rect key="frame" x="289" y="95" width="65" height="57"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PaA-Rk-jCE">
+                                        <rect key="frame" x="297" y="65" width="51" height="31"/>
+                                        <color key="onTintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="btSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="hrQ-Rh-zNG"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="btOn" destination="PaA-Rk-jCE" id="rbI-LV-4wI"/>
+                        <outlet property="hb2Label" destination="tQC-es-jsR" id="O3G-Yr-UoT"/>
+                        <outlet property="hbLabel" destination="hW7-sW-LpQ" id="z8l-ql-xTS"/>
+                        <outlet property="lineChartView" destination="YZf-9T-ltH" id="3GT-V0-Vb4"/>
+                        <outlet property="previewView" destination="Qk9-UT-vRX" id="f6o-Nc-zfp"/>
+                        <outlet property="uiHeart" destination="4tO-xd-ru6" id="JVX-oy-SHS"/>
+                        <outlet property="uiHeart2" destination="ubq-Yl-5kB" id="hGt-G5-vj9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="288"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="heart" width="2000" height="2000"/>
+        <image name="heart2" width="2000" height="2000"/>
+    </resources>
+</document>

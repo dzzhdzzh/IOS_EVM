@@ -1,0 +1,812 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		35D79ECF757283287144AD83 /* Pods_HeartMonitorGUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808821F11796C09DAA0206FC /* Pods_HeartMonitorGUITests.framework */; };
+		8479934C3A55F68DB0A3EDC0 /* Pods_HeartMonitorGUIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3688F92326059CA7257EAB4F /* Pods_HeartMonitorGUIUITests.framework */; };
+		9A0F9E4E1D51BD020024218C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0F9E4D1D51BD020024218C /* AppDelegate.swift */; };
+		9A0F9E501D51BD020024218C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0F9E4F1D51BD020024218C /* ViewController.swift */; };
+		9A0F9E531D51BD020024218C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A0F9E511D51BD020024218C /* Main.storyboard */; };
+		9A0F9E551D51BD020024218C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A0F9E541D51BD020024218C /* Assets.xcassets */; };
+		9A0F9E581D51BD020024218C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A0F9E561D51BD020024218C /* LaunchScreen.storyboard */; };
+		9A0F9E631D51BD020024218C /* ChartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0F9E621D51BD020024218C /* ChartTests.swift */; };
+		9A0F9E6E1D51BD020024218C /* ChartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0F9E6D1D51BD020024218C /* ChartUITests.swift */; };
+		9A0F9E7C1D51D8E60024218C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A0F9E7B1D51D8E50024218C /* CoreBluetooth.framework */; };
+		9A58BD9A1D5938AD004FAAB0 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A58BD991D5938AD004FAAB0 /* OpenCVWrapper.mm */; };
+		9A7331B71D594AFB0061C9B9 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7331B61D594AFB0061C9B9 /* CoreVideo.framework */; };
+		9A7331B91D594B040061C9B9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7331B81D594B040061C9B9 /* CoreMedia.framework */; };
+		9A7331BB1D594B0A0061C9B9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7331BA1D594B0A0061C9B9 /* Accelerate.framework */; };
+		9A7331BD1D594B1E0061C9B9 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7331BC1D594B1E0061C9B9 /* CoreImage.framework */; };
+		9A7331BF1D594B240061C9B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7331BE1D594B240061C9B9 /* QuartzCore.framework */; };
+		9A7331C11D594B450061C9B9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7331C01D594B450061C9B9 /* AVFoundation.framework */; };
+		9A7331C31D594B4B0061C9B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7331C21D594B4B0061C9B9 /* UIKit.framework */; };
+		9A7331C51D594B5A0061C9B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7331C41D594B5A0061C9B9 /* Foundation.framework */; };
+		9A7331C71D594B600061C9B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7331C61D594B600061C9B9 /* CoreGraphics.framework */; };
+		9AA50DB61D58FCBA00F01B68 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA50DB51D58FCBA00F01B68 /* opencv2.framework */; };
+		9AA50DCA1D590AD100F01B68 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA50DC91D590AD100F01B68 /* AssetsLibrary.framework */; };
+		9AA50DCC1D5925AC00F01B68 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA50DCB1D5925AC00F01B68 /* libstdc++.6.0.9.tbd */; };
+		9AA50DCE1D5925DA00F01B68 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA50DCD1D5925DA00F01B68 /* libc++.tbd */; };
+		ADA265179CC575928D6E0A69 /* Pods_HeartMonitorGUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F70BBFEF979ABCC5BB6E26 /* Pods_HeartMonitorGUI.framework */; };
+		C7722D291D59979900178866 /* SpatialFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7722D251D59979900178866 /* SpatialFilter.cpp */; };
+		C7722D2A1D59979900178866 /* VideoProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7722D271D59979900178866 /* VideoProcessor.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9A0F9E5F1D51BD020024218C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0F9E421D51BD020024218C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A0F9E491D51BD020024218C;
+			remoteInfo = Chart;
+		};
+		9A0F9E6A1D51BD020024218C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A0F9E421D51BD020024218C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A0F9E491D51BD020024218C;
+			remoteInfo = Chart;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		010FEFEA0CAEE1C5BC6B8197 /* Pods-ChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChartTests/Pods-ChartTests.debug.xcconfig"; sourceTree = "<group>"; };
+		11745B66822BD55B162C6782 /* Pods-HeartMonitorGUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartMonitorGUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartMonitorGUI/Pods-HeartMonitorGUI.release.xcconfig"; sourceTree = "<group>"; };
+		288405C486C220D1ADA2EAFD /* Pods-HeartMonitorGUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartMonitorGUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartMonitorGUITests/Pods-HeartMonitorGUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		33DA63806499620B7EC4BED9 /* Pods-HeartMonitorGUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartMonitorGUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartMonitorGUITests/Pods-HeartMonitorGUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3688F92326059CA7257EAB4F /* Pods_HeartMonitorGUIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartMonitorGUIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55D311BE55AF9FF372B1C338 /* Pods-HeartMonitorGUIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartMonitorGUIUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartMonitorGUIUITests/Pods-HeartMonitorGUIUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		689B058B416590E8C3CB9578 /* Pods-ChartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChartUITests/Pods-ChartUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A59C2B364A4E1450C178250 /* Pods-Chart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chart/Pods-Chart.debug.xcconfig"; sourceTree = "<group>"; };
+		808821F11796C09DAA0206FC /* Pods_HeartMonitorGUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartMonitorGUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		848E4963A153D3C9A0817DAF /* Pods-ChartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChartUITests/Pods-ChartUITests.release.xcconfig"; sourceTree = "<group>"; };
+		86840A77EAEF45DC0C33339E /* Pods-HeartMonitorGUIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartMonitorGUIUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HeartMonitorGUIUITests/Pods-HeartMonitorGUIUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8794440F86B189416CAE49D8 /* Pods-ChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChartTests/Pods-ChartTests.release.xcconfig"; sourceTree = "<group>"; };
+		9A0F9E4A1D51BD020024218C /* HeartMonitorGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartMonitorGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0F9E4D1D51BD020024218C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9A0F9E4F1D51BD020024218C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9A0F9E521D51BD020024218C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A0F9E541D51BD020024218C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A0F9E571D51BD020024218C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9A0F9E591D51BD020024218C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A0F9E5E1D51BD020024218C /* HeartMonitorGUI.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartMonitorGUI.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0F9E621D51BD020024218C /* ChartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTests.swift; sourceTree = "<group>"; };
+		9A0F9E641D51BD020024218C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A0F9E691D51BD020024218C /* HeartMonitorGUI.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeartMonitorGUI.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0F9E6D1D51BD020024218C /* ChartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartUITests.swift; sourceTree = "<group>"; };
+		9A0F9E6F1D51BD020024218C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A0F9E7B1D51D8E50024218C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		9A58BD981D593876004FAAB0 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		9A58BD991D5938AD004FAAB0 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		9A7331B11D5949D90061C9B9 /* libCvEffects.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCvEffects.a; path = "../../Library/Developer/Xcode/DerivedData/Chart-byihcwbkxuozoxfkysftnwhpacgx/Build/Products/Debug-iphoneos/libCvEffects.a"; sourceTree = "<group>"; };
+		9A7331B61D594AFB0061C9B9 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		9A7331B81D594B040061C9B9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		9A7331BA1D594B0A0061C9B9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9A7331BC1D594B1E0061C9B9 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		9A7331BE1D594B240061C9B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9A7331C01D594B450061C9B9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9A7331C21D594B4B0061C9B9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9A7331C41D594B5A0061C9B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9A7331C61D594B600061C9B9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9AA50DB51D58FCBA00F01B68 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		9AA50DC81D59036000F01B68 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		9AA50DC91D590AD100F01B68 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		9AA50DCB1D5925AC00F01B68 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		9AA50DCD1D5925DA00F01B68 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A2F70BBFEF979ABCC5BB6E26 /* Pods_HeartMonitorGUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartMonitorGUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C01713B62651D49F665E71A6 /* Pods-HeartMonitorGUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartMonitorGUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HeartMonitorGUI/Pods-HeartMonitorGUI.debug.xcconfig"; sourceTree = "<group>"; };
+		C7722D251D59979900178866 /* SpatialFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpatialFilter.cpp; sourceTree = "<group>"; };
+		C7722D261D59979900178866 /* SpatialFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpatialFilter.hpp; sourceTree = "<group>"; };
+		C7722D271D59979900178866 /* VideoProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VideoProcessor.cpp; sourceTree = "<group>"; };
+		C7722D281D59979900178866 /* VideoProcessor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VideoProcessor.hpp; sourceTree = "<group>"; };
+		F19A0C888A8AC5E2427D7C34 /* Pods-Chart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chart.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chart/Pods-Chart.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A0F9E471D51BD020024218C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A7331C71D594B600061C9B9 /* CoreGraphics.framework in Frameworks */,
+				9A7331C51D594B5A0061C9B9 /* Foundation.framework in Frameworks */,
+				9A7331C31D594B4B0061C9B9 /* UIKit.framework in Frameworks */,
+				9A7331C11D594B450061C9B9 /* AVFoundation.framework in Frameworks */,
+				9A7331BF1D594B240061C9B9 /* QuartzCore.framework in Frameworks */,
+				9A7331BD1D594B1E0061C9B9 /* CoreImage.framework in Frameworks */,
+				9A7331BB1D594B0A0061C9B9 /* Accelerate.framework in Frameworks */,
+				9A7331B91D594B040061C9B9 /* CoreMedia.framework in Frameworks */,
+				9A7331B71D594AFB0061C9B9 /* CoreVideo.framework in Frameworks */,
+				9AA50DCE1D5925DA00F01B68 /* libc++.tbd in Frameworks */,
+				9AA50DCC1D5925AC00F01B68 /* libstdc++.6.0.9.tbd in Frameworks */,
+				9AA50DCA1D590AD100F01B68 /* AssetsLibrary.framework in Frameworks */,
+				9A0F9E7C1D51D8E60024218C /* CoreBluetooth.framework in Frameworks */,
+				9AA50DB61D58FCBA00F01B68 /* opencv2.framework in Frameworks */,
+				ADA265179CC575928D6E0A69 /* Pods_HeartMonitorGUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0F9E5B1D51BD020024218C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35D79ECF757283287144AD83 /* Pods_HeartMonitorGUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0F9E661D51BD020024218C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8479934C3A55F68DB0A3EDC0 /* Pods_HeartMonitorGUIUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2EBD08B3AC21E6B7048773FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A7331C61D594B600061C9B9 /* CoreGraphics.framework */,
+				9A7331C41D594B5A0061C9B9 /* Foundation.framework */,
+				9A7331C21D594B4B0061C9B9 /* UIKit.framework */,
+				9A7331C01D594B450061C9B9 /* AVFoundation.framework */,
+				9A7331BE1D594B240061C9B9 /* QuartzCore.framework */,
+				9A7331BC1D594B1E0061C9B9 /* CoreImage.framework */,
+				9A7331BA1D594B0A0061C9B9 /* Accelerate.framework */,
+				9A7331B81D594B040061C9B9 /* CoreMedia.framework */,
+				9A7331B61D594AFB0061C9B9 /* CoreVideo.framework */,
+				9A7331B11D5949D90061C9B9 /* libCvEffects.a */,
+				9AA50DCD1D5925DA00F01B68 /* libc++.tbd */,
+				9AA50DCB1D5925AC00F01B68 /* libstdc++.6.0.9.tbd */,
+				9AA50DC91D590AD100F01B68 /* AssetsLibrary.framework */,
+				9AA50DB51D58FCBA00F01B68 /* opencv2.framework */,
+				9A0F9E7B1D51D8E50024218C /* CoreBluetooth.framework */,
+				A2F70BBFEF979ABCC5BB6E26 /* Pods_HeartMonitorGUI.framework */,
+				808821F11796C09DAA0206FC /* Pods_HeartMonitorGUITests.framework */,
+				3688F92326059CA7257EAB4F /* Pods_HeartMonitorGUIUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A0F9E411D51BD020024218C = {
+			isa = PBXGroup;
+			children = (
+				9A0F9E4C1D51BD020024218C /* HeartMonitorGUI */,
+				9A0F9E611D51BD020024218C /* HeartMonitorGUITests */,
+				9A0F9E6C1D51BD020024218C /* HeartMonitorGUIUITests */,
+				9A0F9E4B1D51BD020024218C /* Products */,
+				F64ADE21FB611B0AEF5C8338 /* Pods */,
+				2EBD08B3AC21E6B7048773FC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9A0F9E4B1D51BD020024218C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A0F9E4A1D51BD020024218C /* HeartMonitorGUI.app */,
+				9A0F9E5E1D51BD020024218C /* HeartMonitorGUI.xctest */,
+				9A0F9E691D51BD020024218C /* HeartMonitorGUI.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A0F9E4C1D51BD020024218C /* HeartMonitorGUI */ = {
+			isa = PBXGroup;
+			children = (
+				C7722D251D59979900178866 /* SpatialFilter.cpp */,
+				C7722D261D59979900178866 /* SpatialFilter.hpp */,
+				C7722D271D59979900178866 /* VideoProcessor.cpp */,
+				C7722D281D59979900178866 /* VideoProcessor.hpp */,
+				9AA50DC81D59036000F01B68 /* BridgingHeader.h */,
+				9A0F9E4D1D51BD020024218C /* AppDelegate.swift */,
+				9A0F9E4F1D51BD020024218C /* ViewController.swift */,
+				9A0F9E511D51BD020024218C /* Main.storyboard */,
+				9A0F9E541D51BD020024218C /* Assets.xcassets */,
+				9A0F9E561D51BD020024218C /* LaunchScreen.storyboard */,
+				9A0F9E591D51BD020024218C /* Info.plist */,
+				9A58BD981D593876004FAAB0 /* OpenCVWrapper.h */,
+				9A58BD991D5938AD004FAAB0 /* OpenCVWrapper.mm */,
+			);
+			name = HeartMonitorGUI;
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		9A0F9E611D51BD020024218C /* HeartMonitorGUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9A0F9E621D51BD020024218C /* ChartTests.swift */,
+				9A0F9E641D51BD020024218C /* Info.plist */,
+			);
+			name = HeartMonitorGUITests;
+			path = ChartTests;
+			sourceTree = "<group>";
+		};
+		9A0F9E6C1D51BD020024218C /* HeartMonitorGUIUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9A0F9E6D1D51BD020024218C /* ChartUITests.swift */,
+				9A0F9E6F1D51BD020024218C /* Info.plist */,
+			);
+			name = HeartMonitorGUIUITests;
+			path = ChartUITests;
+			sourceTree = "<group>";
+		};
+		F64ADE21FB611B0AEF5C8338 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A59C2B364A4E1450C178250 /* Pods-Chart.debug.xcconfig */,
+				F19A0C888A8AC5E2427D7C34 /* Pods-Chart.release.xcconfig */,
+				010FEFEA0CAEE1C5BC6B8197 /* Pods-ChartTests.debug.xcconfig */,
+				8794440F86B189416CAE49D8 /* Pods-ChartTests.release.xcconfig */,
+				689B058B416590E8C3CB9578 /* Pods-ChartUITests.debug.xcconfig */,
+				848E4963A153D3C9A0817DAF /* Pods-ChartUITests.release.xcconfig */,
+				C01713B62651D49F665E71A6 /* Pods-HeartMonitorGUI.debug.xcconfig */,
+				11745B66822BD55B162C6782 /* Pods-HeartMonitorGUI.release.xcconfig */,
+				288405C486C220D1ADA2EAFD /* Pods-HeartMonitorGUITests.debug.xcconfig */,
+				33DA63806499620B7EC4BED9 /* Pods-HeartMonitorGUITests.release.xcconfig */,
+				55D311BE55AF9FF372B1C338 /* Pods-HeartMonitorGUIUITests.debug.xcconfig */,
+				86840A77EAEF45DC0C33339E /* Pods-HeartMonitorGUIUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A0F9E491D51BD020024218C /* HeartMonitorGUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A0F9E721D51BD020024218C /* Build configuration list for PBXNativeTarget "HeartMonitorGUI" */;
+			buildPhases = (
+				1B4EEE472F54614411D5B5AE /* [CP] Check Pods Manifest.lock */,
+				9A0F9E461D51BD020024218C /* Sources */,
+				9A0F9E471D51BD020024218C /* Frameworks */,
+				9A0F9E481D51BD020024218C /* Resources */,
+				999DEAB435B83FCC4CCD18C3 /* [CP] Embed Pods Frameworks */,
+				66DEFB4C8407B9A80826833C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HeartMonitorGUI;
+			productName = Chart;
+			productReference = 9A0F9E4A1D51BD020024218C /* HeartMonitorGUI.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9A0F9E5D1D51BD020024218C /* HeartMonitorGUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A0F9E751D51BD020024218C /* Build configuration list for PBXNativeTarget "HeartMonitorGUITests" */;
+			buildPhases = (
+				6DF1B7619FC8DCA14D585FAD /* [CP] Check Pods Manifest.lock */,
+				9A0F9E5A1D51BD020024218C /* Sources */,
+				9A0F9E5B1D51BD020024218C /* Frameworks */,
+				9A0F9E5C1D51BD020024218C /* Resources */,
+				1A1D3F575B20273BF6E94C3B /* [CP] Embed Pods Frameworks */,
+				FB864DDB03921B565B53D8E6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A0F9E601D51BD020024218C /* PBXTargetDependency */,
+			);
+			name = HeartMonitorGUITests;
+			productName = ChartTests;
+			productReference = 9A0F9E5E1D51BD020024218C /* HeartMonitorGUI.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9A0F9E681D51BD020024218C /* HeartMonitorGUIUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A0F9E781D51BD020024218C /* Build configuration list for PBXNativeTarget "HeartMonitorGUIUITests" */;
+			buildPhases = (
+				C5BB771431E9C59151ECF6E1 /* [CP] Check Pods Manifest.lock */,
+				9A0F9E651D51BD020024218C /* Sources */,
+				9A0F9E661D51BD020024218C /* Frameworks */,
+				9A0F9E671D51BD020024218C /* Resources */,
+				22CA6175BAE28CAE62402529 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A0F9E6B1D51BD020024218C /* PBXTargetDependency */,
+			);
+			name = HeartMonitorGUIUITests;
+			productName = ChartUITests;
+			productReference = 9A0F9E691D51BD020024218C /* HeartMonitorGUI.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A0F9E421D51BD020024218C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Hackathon;
+				TargetAttributes = {
+					9A0F9E491D51BD020024218C = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = LKDK9ULBC3;
+					};
+					9A0F9E5D1D51BD020024218C = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 9A0F9E491D51BD020024218C;
+					};
+					9A0F9E681D51BD020024218C = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 9A0F9E491D51BD020024218C;
+					};
+				};
+			};
+			buildConfigurationList = 9A0F9E451D51BD020024218C /* Build configuration list for PBXProject "HeartMonitorGUI" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A0F9E411D51BD020024218C;
+			productRefGroup = 9A0F9E4B1D51BD020024218C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A0F9E491D51BD020024218C /* HeartMonitorGUI */,
+				9A0F9E5D1D51BD020024218C /* HeartMonitorGUITests */,
+				9A0F9E681D51BD020024218C /* HeartMonitorGUIUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A0F9E481D51BD020024218C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0F9E581D51BD020024218C /* LaunchScreen.storyboard in Resources */,
+				9A0F9E551D51BD020024218C /* Assets.xcassets in Resources */,
+				9A0F9E531D51BD020024218C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0F9E5C1D51BD020024218C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0F9E671D51BD020024218C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A1D3F575B20273BF6E94C3B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartMonitorGUITests/Pods-HeartMonitorGUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B4EEE472F54614411D5B5AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		22CA6175BAE28CAE62402529 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartMonitorGUIUITests/Pods-HeartMonitorGUIUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66DEFB4C8407B9A80826833C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartMonitorGUI/Pods-HeartMonitorGUI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6DF1B7619FC8DCA14D585FAD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		999DEAB435B83FCC4CCD18C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartMonitorGUI/Pods-HeartMonitorGUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5BB771431E9C59151ECF6E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FB864DDB03921B565B53D8E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HeartMonitorGUITests/Pods-HeartMonitorGUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A0F9E461D51BD020024218C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A58BD9A1D5938AD004FAAB0 /* OpenCVWrapper.mm in Sources */,
+				9A0F9E501D51BD020024218C /* ViewController.swift in Sources */,
+				C7722D2A1D59979900178866 /* VideoProcessor.cpp in Sources */,
+				C7722D291D59979900178866 /* SpatialFilter.cpp in Sources */,
+				9A0F9E4E1D51BD020024218C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0F9E5A1D51BD020024218C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0F9E631D51BD020024218C /* ChartTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A0F9E651D51BD020024218C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A0F9E6E1D51BD020024218C /* ChartUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A0F9E601D51BD020024218C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A0F9E491D51BD020024218C /* HeartMonitorGUI */;
+			targetProxy = 9A0F9E5F1D51BD020024218C /* PBXContainerItemProxy */;
+		};
+		9A0F9E6B1D51BD020024218C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A0F9E491D51BD020024218C /* HeartMonitorGUI */;
+			targetProxy = 9A0F9E6A1D51BD020024218C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9A0F9E511D51BD020024218C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A0F9E521D51BD020024218C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9A0F9E561D51BD020024218C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A0F9E571D51BD020024218C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A0F9E701D51BD020024218C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9A0F9E711D51BD020024218C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A0F9E731D51BD020024218C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C01713B62651D49F665E71A6 /* Pods-HeartMonitorGUI.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Chart/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "";
+				PRODUCT_BUNDLE_IDENTIFIER = dzzhdzzh;
+				PRODUCT_NAME = HeartMonitorGUI;
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = ./Chart/BridgingHeader.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Debug;
+		};
+		9A0F9E741D51BD020024218C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11745B66822BD55B162C6782 /* Pods-HeartMonitorGUI.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Chart/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				"OTHER_LDFLAGS[arch=*]" = "";
+				PRODUCT_BUNDLE_IDENTIFIER = dzzhdzzh;
+				PRODUCT_NAME = HeartMonitorGUI;
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = ./Chart/BridgingHeader.h;
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Release;
+		};
+		9A0F9E761D51BD020024218C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 288405C486C220D1ADA2EAFD /* Pods-HeartMonitorGUITests.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ChartTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = h.ChartTests;
+				PRODUCT_NAME = HeartMonitorGUI;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeartMonitorGUI.app/HeartMonitorGUI";
+			};
+			name = Debug;
+		};
+		9A0F9E771D51BD020024218C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33DA63806499620B7EC4BED9 /* Pods-HeartMonitorGUITests.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ChartTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = h.ChartTests;
+				PRODUCT_NAME = HeartMonitorGUI;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeartMonitorGUI.app/HeartMonitorGUI";
+			};
+			name = Release;
+		};
+		9A0F9E791D51BD020024218C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55D311BE55AF9FF372B1C338 /* Pods-HeartMonitorGUIUITests.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				INFOPLIST_FILE = ChartUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = h.ChartUITests;
+				PRODUCT_NAME = HeartMonitorGUI;
+				TEST_TARGET_NAME = Chart;
+			};
+			name = Debug;
+		};
+		9A0F9E7A1D51BD020024218C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86840A77EAEF45DC0C33339E /* Pods-HeartMonitorGUIUITests.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				INFOPLIST_FILE = ChartUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = h.ChartUITests;
+				PRODUCT_NAME = HeartMonitorGUI;
+				TEST_TARGET_NAME = Chart;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A0F9E451D51BD020024218C /* Build configuration list for PBXProject "HeartMonitorGUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0F9E701D51BD020024218C /* Debug */,
+				9A0F9E711D51BD020024218C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A0F9E721D51BD020024218C /* Build configuration list for PBXNativeTarget "HeartMonitorGUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0F9E731D51BD020024218C /* Debug */,
+				9A0F9E741D51BD020024218C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A0F9E751D51BD020024218C /* Build configuration list for PBXNativeTarget "HeartMonitorGUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0F9E761D51BD020024218C /* Debug */,
+				9A0F9E771D51BD020024218C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A0F9E781D51BD020024218C /* Build configuration list for PBXNativeTarget "HeartMonitorGUIUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A0F9E791D51BD020024218C /* Debug */,
+				9A0F9E7A1D51BD020024218C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A0F9E421D51BD020024218C /* Project object */;
+}

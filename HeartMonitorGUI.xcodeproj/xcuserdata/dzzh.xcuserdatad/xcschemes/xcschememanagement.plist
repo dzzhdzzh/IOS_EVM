@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>HeartMonitorGUI.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>9A0F9E491D51BD020024218C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A0F9E5D1D51BD020024218C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A0F9E681D51BD020024218C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
